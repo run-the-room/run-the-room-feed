@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "iep-meeting",
+    "type": "IEP Meeting"
+  },
+  {
+    "slug": "school-board-meeting",
+    "type": "School Board Meeting"
+  },
+  {
+    "slug": "parent-teacher-conference",
+    "type": "Parent-Teacher Conference"
+  },
+  {
+    "slug": "job-interview-panel",
+    "type": "Job Interview Panel"
+  },
+  {
+    "slug": "performance-review",
+    "type": "Performance Review"
+  },
+  {
+    "slug": "project-kickoff",
+    "type": "Project Kickoff"
+  },
+  {
+    "slug": "team-standup",
+    "type": "Team Standup"
+  },
+  {
+    "slug": "sales-presentation",
+    "type": "Sales Presentation"
+  },
+  {
+    "slug": "nonprofit-board-meeting",
+    "type": "Nonprofit Board Meeting"
+  },
+  {
+    "slug": "town-hall",
+    "type": "Town Hall"
+  },
+  {
+    "slug": "sprint-retrospective",
+    "type": "Sprint Retrospective"
+  },
+  {
+    "slug": "hiring-committee",
+    "type": "Hiring Committee"
+  },
+  {
+    "slug": "504-plan-meeting",
+    "type": "504 Plan Meeting"
+  },
+  {
+    "slug": "staff-meeting",
+    "type": "Staff Meeting"
+  },
+  {
+    "slug": "disciplinary-hr-meeting",
+    "type": "Disciplinary/HR Meeting"
+  }
+]
