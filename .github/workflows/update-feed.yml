@@ -1,0 +1,108 @@
+name: Update Run the Room Feed
+
+on:
+  schedule:
+    - cron: '20 12 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-run-the-room-feed
+  cancel-in-progress: false
+
+jobs:
+  update-feed:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Rebuild feed.xml from upstream
+        run: |
+          python3 - <<'PYEOF'
+          import os, re, urllib.request
+
+          UPSTREAM = "https://muse.ai/podcasts/feed/1337692426099284/46958af6-3f81-48da-90a8-95c133c7c40f"
+          PROXY_BASE = "https://run-the-room.github.io/run-the-room-feed"
+          AUTHOR = "Professional Development Inc"
+          OWNER_EMAIL = "runtheroom@outlook.com"
+          CATEGORY = "Business"
+          COVER_URL = PROXY_BASE + "/cover.png"
+          # Excluded GUIDs: add a GUID here to pull an episode out of the public feed
+          # (used when a corrected "Revised" edition replaces an original).
+          EXCLUDED_GUIDS = []
+
+          req = urllib.request.Request(UPSTREAM, headers={"User-Agent": "Mozilla/5.0"})
+          with urllib.request.urlopen(req, timeout=60) as resp:
+              feed = resp.read().decode("utf-8")
+
+          # Remove any <item> block whose <guid> contains an excluded GUID.
+          def _remove_excluded_items(xml):
+              def _keep(match):
+                  guid_match = re.search(r"<guid[^>]*>(.*?)</guid>", match.group(0), flags=re.S)
+                  if guid_match and any(excluded in guid_match.group(1) for excluded in EXCLUDED_GUIDS):
+                      return ""
+                  return match.group(0)
+              return re.sub(r"<item>.*?</item>", _keep, xml, flags=re.S)
+
+          feed = _remove_excluded_items(feed)
+
+          feed = re.sub(r"\s*<itunes:author>.*?</itunes:author>", "", feed, flags=re.S)
+          feed = re.sub(r"\s*<itunes:category[^/]*/>", "", feed)
+          feed = re.sub(r"\s*<itunes:category[^>]*>.*?</itunes:category>", "", feed, flags=re.S)
+          feed = re.sub(r"\s*<itunes:owner>.*?</itunes:owner>", "", feed, flags=re.S)
+          feed = re.sub(r"\s*<itunes:image[^>]*/?>", "", feed, flags=re.S)
+
+          tags = (
+              f"\n    <itunes:author>{AUTHOR}</itunes:author>"
+              f'\n    <itunes:category text="{CATEGORY}" />'
+              f'\n    <itunes:image href="{COVER_URL}" />'
+              f"\n    <itunes:owner>\n      <itunes:name>{AUTHOR}</itunes:name>"
+              f"\n      <itunes:email>{OWNER_EMAIL}</itunes:email>\n    </itunes:owner>"
+          )
+          feed, n = re.subn(r"(<language>[^<]*</language>)", r"\1" + tags, feed, count=1)
+          if n == 0:
+              raise SystemExit("anchor <language> tag not found")
+
+          self_url = PROXY_BASE.rstrip("/") + "/feed.xml"
+          feed = re.sub(
+              r'(<atom:link href=")[^"]*(" rel="self")',
+              r"\g<1>" + self_url + r"\g<2>",
+              feed,
+              count=1,
+          )
+
+          def guids(text):
+              return set(re.findall(r"<guid[^>]*>(.*?)</guid>", text))
+
+          old_guids = guids(open("feed.xml", encoding="utf-8").read()) if os.path.exists("feed.xml") else set()
+          new_guids = guids(feed)
+          if old_guids == new_guids and old_guids:
+              print(f"no change ({len(new_guids)} episodes)")
+          else:
+              with open("feed.xml", "w", encoding="utf-8") as f:
+                  f.write(feed)
+              print(f"updated feed.xml ({len(new_guids)} episodes)")
+          PYEOF
+
+      - name: Rebuild per-meeting-type index pages
+        run: |
+          python3 build-index.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "podcast-feed-bot"
+          git config user.email "podcast-feed-bot@users.noreply.github.com"
+          git add feed.xml index.html cover.png $(python3 -c "import json; print(' '.join(m['slug'] + '.html' for m in json.load(open('meeting-types.json'))))")
+          if git diff --cached --quiet; then
+            echo "feed and index pages unchanged, nothing to commit"
+          else
+            git commit -m "Update Run the Room feed and meeting-type index pages"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
