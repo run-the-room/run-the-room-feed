@@ -3,9 +3,8 @@
      xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
   <title>Run the Room</title>
-  <description>One meeting type each week, in three parts: planning, running, and follow-up. Across every industry — IEP meetings, school boards, interviews, sales presentations, town halls, and more. New episodes every Sunday.
-
-AI Generated</description>
+    <description>The weekly podcast on how business actually works — from the first idea to a running organization. Season one builds a business from the very beginning — starting from zero, the idea and the customer, making it real, money in and money out, the books, pricing, the first sale, being findable, your first people, running the days, leading people, and why we meet.
+</description>
   <language>en</language>
     <itunes:author>Professional Development Inc</itunes:author>
     <itunes:category text="Business" />
