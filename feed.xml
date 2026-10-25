@@ -3,8 +3,9 @@
      xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
   <title>Run the Room</title>
-    <description>The weekly podcast on how business actually works — from the first idea to a running organization. Season one builds a business from the very beginning — starting from zero, the idea and the customer, making it real, money in and money out, the books, pricing, the first sale, being findable, your first people, running the days, leading people, and why we meet.
-</description>
+  <description>One meeting type each week, in three parts: planning, running, and follow-up. Across every industry — IEP meetings, school boards, interviews, sales presentations, town halls, and more. New episodes every Sunday.
+
+AI Generated</description>
   <language>en</language>
     <itunes:author>Professional Development Inc</itunes:author>
     <itunes:category text="Business" />
@@ -29,6 +30,25 @@ AI Generated</description>
     <guid isPermaLink="false">ep-e76bffcf-8257-4a4a-a6f1-37d7d3fa2863</guid>
     <pubDate>Mon, 19 Oct 2026 19:19:13 +0000</pubDate>
     <itunes:duration>48</itunes:duration>
+  </item>
+  <item>
+    <title>Starting From Zero: What a Business Actually Is</title>
+    <description>Starting From Zero opens Run the Room at the true beginning: what a business actually is. Alex and Jordan define a business as an organized answer to somebody else&apos;s problem, offered in exchange for money, with the machinery to keep that exchange going — then test that definition against Peter Drucker&apos;s 1954 claim that the purpose of a business is to create a customer, the three legs of offer, customers, and money, Bureau of Labor Statistics survival data, cash-flow research, and four common impostors: a hobby, a job you buy yourself, an audience, and a product without a system. New episodes every Sunday. Run the Room builds business from the very beginning — foundations first, one step each week.
+
+Sources:
+- Peter Drucker, The Practice of Management (1954), p. 37: &quot;There is only one valid definition of business purpose: to create a customer&quot; — https://en.wikiquote.org/w/index.php?title=Peter_Drucker&amp;oldid=2975895
+- U.S. Small Business Administration, Launch your business guide (structure, registration, tax IDs, licenses): https://www.sba.gov/es/guia-de-negocios/lance-su-empresa
+- U.S. Small Business Administration, Choose a business structure (updated March 7, 2025): https://www.sba.gov/business-guide/launch-your-business/choose-business-structure
+- Bureau of Labor Statistics, Business Employment Dynamics establishment survival through March 2025 (77.9% year 1, 51.4% at 5 years for the 2020 cohort, 34.7% at 10 years for the 2015 cohort), summarized at: https://startbusinessbystate.com/business-survival-rates-by-state/
+- SCORE / U.S. Bank study cited on cash flow and small business failure (about 82% tied to poor cash flow management), and Federal Reserve 2026 Report on Employer Firms based on the 2025 Small Business Credit Survey: https://www.oneparkfinancial.com/blog/why-82-percent-of-small-businesses-fail-because-of-cash-flow
+
+To verify items without a stable URL: search the Bureau of Labor Statistics site for Business Employment Dynamics Table 7 establishment age and survival, and search the Federal Reserve site for the 2026 Report on Employer Firms, Small Business Credit Survey.
+
+AI Generated</description>
+    <enclosure url="https://muse.ai/podcasts/media/1337692426099284/46958af6-3f81-48da-90a8-95c133c7c40f/ep-cc02c786-223a-4972-91bf-a0b87e52f68f.mp3" length="10859557" type="audio/mpeg"/>
+    <guid isPermaLink="false">ep-cc02c786-223a-4972-91bf-a0b87e52f68f</guid>
+    <pubDate>Sun, 25 Oct 2026 23:17:55 +0000</pubDate>
+    <itunes:duration>1357</itunes:duration>
   </item>
 </channel>
 </rss>
