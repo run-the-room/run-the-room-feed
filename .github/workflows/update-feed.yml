@@ -51,6 +51,12 @@ jobs:
               return re.sub(r"<item>.*?</item>", _keep, xml, flags=re.S)
 
           feed = _remove_excluded_items(feed)
+          # Channel description: pivoted foundations framing (Oct 25, 2026).
+          # Upstream still carries the old meetings-only text, so override it here.
+          CHANNEL_DESCRIPTION = "Run the Room is a weekly podcast on how business actually works, built from the very beginning: the idea, the customer, the money, the books, pricing, sales, marketing, hiring, operations \u2014 and the meetings that run it all. New episodes Sundays at 7:00 PM ET.\n\nAI Generated"
+          feed, _ndesc = re.subn(r"<description>.*?</description>", lambda m: "<description>" + CHANNEL_DESCRIPTION + "</description>", feed, count=1, flags=re.S)
+          if _ndesc == 0:
+              raise SystemExit("channel <description> not found")
 
           feed = re.sub(r"\s*<itunes:author>.*?</itunes:author>", "", feed, flags=re.S)
           feed = re.sub(r"\s*<itunes:category[^/]*/>", "", feed)
@@ -80,9 +86,9 @@ jobs:
           def guids(text):
               return set(re.findall(r"<guid[^>]*>(.*?)</guid>", text))
 
-          old_guids = guids(open("feed.xml", encoding="utf-8").read()) if os.path.exists("feed.xml") else set()
+          old_content = open("feed.xml", encoding="utf-8").read() if os.path.exists("feed.xml") else ""
           new_guids = guids(feed)
-          if old_guids == new_guids and old_guids:
+          if old_content == feed:
               print(f"no change ({len(new_guids)} episodes)")
           else:
               with open("feed.xml", "w", encoding="utf-8") as f:
