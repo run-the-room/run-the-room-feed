@@ -50,5 +50,23 @@ AI Generated</description>
     <pubDate>Wed, 28 Oct 2026 00:26:21 +0000</pubDate>
     <itunes:duration>1360</itunes:duration>
   </item>
+  <item>
+    <title>The Idea and the Customer</title>
+    <description>Where business ideas actually come from: a problem somebody already has. Who the customer is (and is not), why everyone is never a customer, the discipline of talking to real people about their past behavior before building anything, and how to test an idea cheaply — conversations, commitments, and the smallest honest experiment — before it costs real money. New episodes every Sunday. Run the Room builds business from the very beginning — foundations first, one step each week.
+
+Sources:
+- U.S. Small Business Administration, Market research and competitive analysis (the six questions: demand, market size, economic indicators, location, market saturation, pricing): https://legacy.sba.gov/business-guide/plan-your-business/market-research-competitive-analysis
+- Thomas R. Eisenmann, Why Start-ups Fail, Harvard Business Review 99, no. 3 (May–June 2021): 76–85 — abstract and citation: https://www.hbs.edu/faculty/Pages/item.aspx?num=60200
+- Harvard Business Review summary of the CB Insights review of 101 startup post-mortems (42% no market need): http://feeds.harvardbusiness.org/~r/harvardbusiness/~3/nW14cQDhvjQ/the-simple-question-that-can-make-or-break-a-startup
+- Steve Blank, Customer Development — &apos;There are no facts inside the building, so get outside&apos;: verify by searching steveblank.com for Customer Development and the phrase &apos;no facts inside the building&apos;
+- Rob Fitzpatrick, The Mom Test (2013) — the three rules for customer conversations: verify by searching &apos;The Mom Test Rob Fitzpatrick three rules past behavior&apos;
+- Eric Ries, The Lean Startup (2011) — validated learning, minimum viable product, and the Zappos test: verify by searching &apos;Lean Startup Eric Ries build measure learn minimum viable product Zappos&apos;
+
+AI Generated</description>
+    <enclosure url="https://muse.ai/podcasts/media/1337692426099284/46958af6-3f81-48da-90a8-95c133c7c40f/ep-45b1f88c-4e49-4c4c-b2d4-b089ccf3caf4.mp3" length="12671269" type="audio/mpeg"/>
+    <guid isPermaLink="false">ep-45b1f88c-4e49-4c4c-b2d4-b089ccf3caf4</guid>
+    <pubDate>Mon, 02 Nov 2026 00:26:26 +0000</pubDate>
+    <itunes:duration>1583</itunes:duration>
+  </item>
 </channel>
 </rss>
